@@ -138,11 +138,14 @@ function saveHighscore(){
     var scoreArr = [];
     if (highscore === null){
         scoreArr = [[score, 90 - timer, initials]];
-        localStorage.setItem(JSON.stringify(scoreArr));
+        localStorage.setItem("highscore",JSON.stringify(scoreArr));
     } else{
         scoreArr = JSON.parse(highscore);
         scoreArr.push([score, 90 - timer, initials]);
-        scoreArr.sort(function(a,b){return a[0] < b[0]});
-        localStorage.setItem(JSON.stringify(scoreArr));
+        localStorage.setItem("highscore",JSON.stringify(scoreArr));
     }
+    clearQuiz();
+    var submitted = document.createElement("h1");
+    submitted.textContent = "Highscore Submitted";
+    quiz.appendChild(submitted);
 }
