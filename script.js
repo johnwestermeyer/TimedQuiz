@@ -80,8 +80,9 @@ function startQuiz(){
         var submit = document.createElement("button");      
         countdown.textContent = timer;
         done.textContent = "You finished the quiz!";
-        result.textContent = `You got ${score} correct with ${timer} seconds to spare.`
+        result.textContent = `You got ${score} correct in ${90 - timer} seconds.`
         submit.textContent = "Add to Highscore List";
+        submit.setAttribute("onclick", "saveHighscore();");
         quiz.appendChild(done);
         quiz.appendChild(result);
         quiz.appendChild(submit);
@@ -129,4 +130,19 @@ startButton.addEventListener("click", function(event){
 function clearQuiz()
 {
     quiz.innerHTML = "";
+}
+
+function saveHighscore(){
+    var initials = prompt("Enter Intials");
+    var highscore = localStorage.getItem("highscore");
+    var scoreArr = [];
+    if (highscore === null){
+        scoreArr = [[score, 90 - timer, initials]];
+        localStorage.setItem(JSON.stringify(scoreArr));
+    } else{
+        scoreArr = JSON.parse(highscore);
+        scoreArr.push([score, 90 - timer, initials]);
+        scoreArr.sort(function(a,b){return a[0] < b[0]});
+        localStorage.setItem(JSON.stringify(scoreArr));
+    }
 }
