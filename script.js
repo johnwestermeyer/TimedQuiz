@@ -104,16 +104,17 @@ function startTimer(){
     timer = 90;
     complete = false;
     countdown.textContent = timer;
-    setInterval(function(){
+    clearInterval(clock);
+    var clock = setInterval(function(){
         if(!complete){
             timer--;
             countdown.textContent = timer;
             if(timer === 0){
-                clearInterval();
+                clearInterval(clock);
                 fail();
             }
         } else{
-            clearInterval();
+            clearInterval(clock);
         }
     }, 1000)
 }
