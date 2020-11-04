@@ -77,7 +77,8 @@ function startQuiz(){
         complete = true;
         var done = document.createElement("h1");
         var result = document.createElement("p");
-        var submit = document.createElement("button");
+        var submit = document.createElement("button");      
+        countdown.textContent = timer;
         done.textContent = "You finished the quiz!";
         result.textContent = `You got ${score} correct with ${timer} seconds to spare.`
         submit.textContent = "Add to Highscore List";
