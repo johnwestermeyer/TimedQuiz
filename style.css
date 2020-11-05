@@ -8,12 +8,18 @@ body{
     padding: 10px;
     text-decoration: none;
 }
-#scorelist{
+#scores{
     display: none;
     position: absolute;
-    padding: 20px;
-    left: 50%;
-    top: 50%;
+    padding: 10px;
+    top: 50px;
+    background-color: purple;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+#close{
+
 }
 #time{
     position: absolute;

@@ -5,6 +5,8 @@ let start = document.querySelector("#start");
 let countdown = document.querySelector("#countdown");
 let status = document.querySelector("#status");
 let highscore = localStorage.getItem("highscore");
+let closebtn = document.querySelector("#close");
+var scoreDiv = document.querySelector("#scores");
 let timer = 90;
 let score = 0;
 let i = 0;  
@@ -155,6 +157,7 @@ function saveHighscore(){
 
 function viewScores(){
     var scorelist = document.querySelector("#scorelist");
+    scorelist.innerHTML = "";
     if(highscore !== null){
         var title = document.createElement("h2");
         var list = document.createElement("ol");
@@ -165,11 +168,17 @@ function viewScores(){
         scoreArr.sort((a,b) => b[0] - a[0]);
         scoreArr.forEach(element => {
             var line = document.createElement("li");
-            line.textContent(`${element[0]} points ${element[1]} second remaining by ${element[2]}`);
+            line.textContent = `${element[0]} Points with ${element[1]} Second(s) Remaining by ${element[2]}`;
             list.appendChild(line);
         });
     }else{
         scorelist.textContent = "No Highscores";
     }
-    scorelist.setAttribute("style", "display:block")
+    scoreDiv.setAttribute("style", "display:block")
 }
+
+function close(){
+    scoreDiv.setAttribute("style", "display:none")
+}
+
+closebtn.addEventListener("click", close);
