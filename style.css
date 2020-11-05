@@ -8,6 +8,13 @@ body{
     padding: 10px;
     text-decoration: none;
 }
+#scorelist{
+    display: none;
+    position: absolute;
+    padding: 20px;
+    left: 50%;
+    top: 50%;
+}
 #time{
     position: absolute;
     right: 0;

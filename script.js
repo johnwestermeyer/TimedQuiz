@@ -4,6 +4,7 @@ let startButton = document.querySelector(".button");
 let start = document.querySelector("#start");
 let countdown = document.querySelector("#countdown");
 let status = document.querySelector("#status");
+let highscore = localStorage.getItem("highscore");
 let timer = 90;
 let score = 0;
 let i = 0;  
@@ -134,8 +135,10 @@ function clearQuiz()
 
 function saveHighscore(){
     var initials = prompt("Enter Intials");
-    var highscore = localStorage.getItem("highscore");
     var scoreArr = [];
+    if(initials === null){
+        initials = "";
+    }
     if (highscore === null){
         scoreArr = [[score, 90 - timer, initials]];
         localStorage.setItem("highscore",JSON.stringify(scoreArr));
@@ -148,4 +151,25 @@ function saveHighscore(){
     var submitted = document.createElement("h1");
     submitted.textContent = "Highscore Submitted";
     quiz.appendChild(submitted);
+}
+
+function viewScores(){
+    var scorelist = document.querySelector("#scorelist");
+    if(highscore !== null){
+        var title = document.createElement("h2");
+        var list = document.createElement("ol");
+        title.textContent = "Highscores:";
+        var scoreArr = JSON.parse(highscore);
+        scorelist.appendChild(title);
+        scorelist.appendChild(list);
+        scoreArr.sort((a,b) => b[0] - a[0]);
+        scoreArr.forEach(element => {
+            var line = document.createElement("li");
+            line.textContent(`${element[0]} points ${element[1]} second remaining by ${element[2]}`);
+            list.appendChild(line);
+        });
+    }else{
+        scorelist.textContent = "No Highscores";
+    }
+    scorelist.setAttribute("style", "display:block")
 }
