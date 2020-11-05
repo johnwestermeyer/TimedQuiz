@@ -41,7 +41,7 @@ quizContents[4] = {
     op: ["JavaScript", "terminal/bash", "for loops", "console log"],
     correct: 4
 }
-
+//recursive quiz function
 function startQuiz(){
     clearQuiz();
     var ques = document.createElement("p");
@@ -91,7 +91,7 @@ function startQuiz(){
         quiz.appendChild(submit);
         }
 }
-
+//fail function when timer runs out
 function fail(){
     clearQuiz();
     var fail = document.createElement("h1");
@@ -104,7 +104,7 @@ function fail(){
     quiz.appendChild(fail);
     quiz.appendChild(restart);
 }
-
+//90 second countdown timer for quiz
 function startTimer(){
     timer = 90;
     complete = false;
@@ -154,7 +154,7 @@ function saveHighscore(){
     submitted.textContent = "Highscore Submitted";
     quiz.appendChild(submitted);
 }
-
+//highscore list generation 
 function viewScores(){
     var scorelist = document.querySelector("#scorelist");
     scorelist.innerHTML = "";
@@ -176,7 +176,7 @@ function viewScores(){
     }
     scoreDiv.setAttribute("style", "display:block")
 }
-
+//close function for highscore list
 function close(){
     scoreDiv.setAttribute("style", "display:none")
 }
